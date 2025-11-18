@@ -51,3 +51,16 @@ st.write("""
 """)
 # Graficamos una tabla
 st.table(df.head())
+
+# Análisis de sobrevivientes por sexo
+survivors = df.groupby("Sex")["Survived"].sum()
+
+fig3, ax3 = plt.subplots()
+ax3.bar(["Hombres", "Mujeres"], [survivors["male"], survivors["female"]])
+ax3.set_title("Número de sobrevivientes por sexo")
+ax3.set_ylabel("Cantidad de sobrevivientes")
+st.pyplot(fig3)
+
+# Tabla de muestra
+st.write("## Muestra de datos")
+st.table(df.head())
